@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: hotstar
-        image: 655668017312.dkr.ecr.ap-south-1.amazonaws.com/demo:27
+        image: 905418107736.dkr.ecr.ap-south-1.amazonaws.com/my-image
         ports:
         - containerPort: 3000  # Port your application listens on
