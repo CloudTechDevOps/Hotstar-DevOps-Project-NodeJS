@@ -1,19 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: hotstar-deployment
+  name: hotstar-app
 spec:
-  replicas: 2 # Number of desired replicas
-  selector:
-    matchLabels:
-      app: hotstar
-  template:
-    metadata:
-      labels:
-        app: hotstar
-    spec:
-      containers:
-      - name: hotstar
-        image: 655668017312.dkr.ecr.ap-south-1.amazonaws.com/demo:29
-        ports:
-        - containerPort: 3000  # Port your application listens on
+  project: default  # Or your AppProject name if created
+  source:
+    repoURL: 'https://github.com/CloudTechDevOps/Hotstar-DevOps-Project-NodeJS.git'
+    targetRevision: HEAD
+    path: K8S
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated: {}
